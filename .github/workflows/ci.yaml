@@ -1,8 +1,10 @@
 name: ci-golang-workflow
+
 on: 
   pull_request:
     branches:
       - develop 
+
 jobs:
   check-application:
     runs-on: ubuntu-latest
@@ -11,11 +13,14 @@ jobs:
         go: ['1.19', '1.18', '1.17', '1.15', '1.14', '1.13', '1.12']
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-go@v2
+      - name: Set up Go ${{ matrix.go }}
+        uses: actions/setup-go@v2
         with:
           go-version: ${{ matrix.go }}
-      - run: go test
-      - run: go run math.go
+      - name: Run tests
+        run: go test
+      - name: Run math.go
+        run: go run math.go
       # - name: Set up QEMU
       #   uses: docker/setup-qemu-action@v1
 
