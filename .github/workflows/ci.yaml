@@ -17,10 +17,8 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: ${{ matrix.go }}
-      - name: Run tests
-        run: go test
-      - name: Run math.go
-        run: go run math.go
+      - run: go test
+      - run: go run math.go
       # - name: Set up QEMU
       #   uses: docker/setup-qemu-action@v1
 
