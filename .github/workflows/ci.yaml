@@ -37,7 +37,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v6
         with:
-          push: true
+          push: false
           tags: lucaspintof5/fc2.0-ci-go:latest
 
     
